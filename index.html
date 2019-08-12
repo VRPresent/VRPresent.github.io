@@ -34,17 +34,31 @@
 
 <h1 id="idea">Architechture</h1>
 
-<p><img src="refine.png" alt="" /></p>
+<figure>
+<p><img src="refine.png" alt="Figure 1 " /></p>	
+<figcaption>Figure 1 : Architecture of V R Present : V R Present is a frugal tele-assistance, immersive tele-presence application</figcaption>	
+</figure>
+
+<figure>
+<p><img src="ROS.png" alt="Figure 1 " /></p>	
+<figcaption>Figure 2 : V R Present ROS Architechture </figcaption>	
+</figure>
+
+<!-- <p><img src="refine.png" alt="Figure 1 " /></p>
+<p><img src="ROS.png" alt="Figure 2 "/></p>
+ --> 
+
 
 <p>
-Our system is entirely based on android and uses webRTC library for android to android communication.
-AppRTC's Audio and Video channel are used to transmit the Audio and Video data while the data channel is used to transmit head pose data, joystick data and other commands including the voice based commands.
-Joystick Inputs are understood using bluetooth and android's motion event class.
-Voice commands are understood using android voice to text and hence converted to relevant messages.
-Head Rotation data and rendering of video frames in VR and AR is done through the Google Cardboard SDK.
-Photo is captured by getting hold of the incoming video frame and it into a useable format.
-Various feedbacks regarding the button pressed, the mode switches are given by providing audio feedback using android text to speech library although other alternatives for providing feedbacks exist like.
-On the remote side, Android phone and laptop attached with turtlebot communicate through UDP and thus the android phone forwards various commands it receives from the AppRTC data channel to the laptop through UDP which then converts these into appropriate ROS messages which are used to control the robot.
+
+Our system is entirely based on android and uses WebRTC framework for android to android communication.
+The android devices on both sides are connected by a two-way WebRTC A/V channel, for real-time audio-video communication, as well as a WebRTC data channel. This data channel is used by the pilot to send control commands to the robot using voice, gamepad / joystick movements, or even head motion. Head tracking and stereoscopic AR / VR rendering is done using the Google Cardboard SDK.
+
+The commands sent by the pilot are received by the V R Present Android application on the robot side. 
+Feedbacks regarding the button pressed, the mode switches are given by providing audio feedback using android text to speech library.
+
+As shown in the architecture diagram (Figure 2) , any ROS-enabled (Robot Operating System enabled) mobile robot can connect to this application. The robot has it's own ROS environment with a rosmaster up and running. This ROS environment consists of two major ROS nodes - a custom built V R Present Package for tele-operation, and the robot's ROS driver package (Robot Driver Package). The V R Present Package has a UDP server running which receives data from the Android application, extracts velocity information from it, and publishes that on the /cmd\textunderscore vel topic. This topic is, in turn, subscribed to by the Robot Driver Package for translational and rotational movement of the robot. The Robot Driver Package also publishes odometry data on the /odom topic, which is subscribed to by the V R Present Package for feedback in head tracking mode.
+
 </p>
 
 <h1 id="candf">Conclusions and Future Work</h1>
