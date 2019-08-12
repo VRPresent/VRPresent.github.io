@@ -37,21 +37,21 @@
 <!-- Lines 40-71 have been commented
  -->
 
-<!-- <h1 id="idea">Architechture</h1>
+<h1 id="idea">Architechture</h1>
 
 <figure>
-<p><img src="refine.png" alt="Figure 1 " /></p>	
-<figcaption>Figure 1 : Architecture of V R Present : V R Present is a frugal tele-assistance, immersive tele-presence application</figcaption>	
+<p><img src="refine.jpeg" alt="Figure 1 " /></p>	
+<figcaption>Figure 1 : The left side represents the pilot side where the user is situated while the right side represents the remote/robot side.</figcaption>	
 </figure>
 
 <figure>
 <p><img src="ROS.png" alt="Figure 1 " /></p>	
-<figcaption>Figure 2 : V R Present ROS Architechture </figcaption>	
+<figcaption>Figure 2 : V R Present Robot Side Architechture </figcaption>	
 </figure>
 
 
-<p>
 
+<p>
 Our system is entirely based on android and uses WebRTC framework for android to android communication.
 The android devices on both sides are connected by a two-way WebRTC A/V channel, for real-time audio-video communication, as well as a WebRTC data channel. This data channel is used by the pilot to send control commands to the robot using voice, gamepad / joystick movements, or even head motion. Head tracking and stereoscopic AR / VR rendering is done using the Google Cardboard SDK.
 
@@ -59,16 +59,16 @@ The commands sent by the pilot are received by the V R Present Android applicati
 Feedbacks regarding the button pressed, the mode switches are given by providing audio feedback using android text to speech library.
 
 As shown in the architecture diagram (Figure 2) , any ROS-enabled (Robot Operating System enabled) mobile robot can connect to this application. The robot has it's own ROS environment with a rosmaster up and running. This ROS environment consists of two major ROS nodes - a custom built V R Present Package for tele-operation, and the robot's ROS driver package (Robot Driver Package). The V R Present Package has a UDP server running which receives data from the Android application, extracts velocity information from it, and publishes that on the /cmd\textunderscore vel topic. This topic is, in turn, subscribed to by the Robot Driver Package for translational and rotational movement of the robot. The Robot Driver Package also publishes odometry data on the /odom topic, which is subscribed to by the V R Present Package for feedback in head tracking mode.
-
 </p>
 
-<h1 id="candf">Conclusions and Future Work</h1>
+<!-- <h1 id="candf">Conclusions and Future Work</h1>
 
 <p><img src="fd.jpg" alt="" /></p>
 
 <p>We presented V R Present, a frugal immersive framework for teleassistence,telepresence, and remote surveillance. Telepresence mode has various applications in monitoring and surveillance, as well as in meetings and presentations, while Teleassist mode has uses in the field of industrial training and repair tasks. Our work combines the best of both in the same application. Application is flexible, immersive , easy to use, and cost effective compared to the counterparts discussed.
 In future, we plan to extend our work by incorporating in device deep learning models for detecting user engagement in presentations, by using three dimensional audio for a more immersive experience and by incorporating sharing of virtual objects between the two sides in TeleAssist mode. 
-</p> -->
+</p>
+ -->
 
 <!-- <h1 id="results">Results</h1>
 
