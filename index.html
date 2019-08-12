@@ -26,11 +26,7 @@
 <p>  Globalization has led to the distribution of corporate operations across multiple geographies. As a result, employees are commonly required to participate in interactions with remote workspaces. Even though video-conferencing is increasingly being used to make this possible, interacting with static displays feels too impersonal and lacks a physical dimension. Telepresence and Tele-robotics aim to bridge this gap, and in this paper, we describe a frugal setup that provides a more natural and immersive experience for the participating entities, with the help of virtual reality on one end, and a robotic avatar representing the human on the other side of the communication. In addition, the same framework can also be applied to the domains of Tele-Surveillance, wherein a human can control a robot to monitor a remote area from a safe vantage point, and Tele-assistance, wherein experts can remotely guide on-site employees. The frugality stems from the use of basic Android phones on either end of the communication, and from the fact that the software for controlling the robot has been written generically so as to support a large variety of robots, as per need. Such a system would help reduce the time, cost and effort spent by organizations and employees on travel logistics, as well as provide an option for off-site operation, while providing a better and more control-rich simulation of physical presence than standard video-conferencing.
 </p>
 
-<h1 id="video">Video</h1>
-<div class="embed-container">
-  <iframe src="https://www.youtube.com/embed/BGRY14znFxY" width="700" height="480" frameborder="0" allowfullscreen="">
-  </iframe>
-</div>
+
 
 
 
@@ -38,6 +34,9 @@
  -->
 
 <h1 id="idea">Architechture</h1>
+<p>
+The two figures below briefly describe the system:
+</p>
 
 <figure>
 <p><img src="refine.jpeg" alt="Figure 1 " /></p>	
@@ -50,16 +49,12 @@
 </figure>
 
 
+<h1 id="video">Video</h1>
+<div class="embed-container">
+  <iframe src="https://www.youtube.com/embed/BGRY14znFxY" width="700" height="480" frameborder="0" allowfullscreen="">
+  </iframe>
+</div>
 
-<p>
-Our system is entirely based on android and uses WebRTC framework for android to android communication.
-The android devices on both sides are connected by a two-way WebRTC A/V channel, for real-time audio-video communication, as well as a WebRTC data channel. This data channel is used by the pilot to send control commands to the robot using voice, gamepad / joystick movements, or even head motion. Head tracking and stereoscopic AR / VR rendering is done using the Google Cardboard SDK.
-
-The commands sent by the pilot are received by the V R Present Android application on the robot side. 
-Feedbacks regarding the button pressed, the mode switches are given by providing audio feedback using android text to speech library.
-
-As shown in the architecture diagram (Figure 2) , any ROS-enabled (Robot Operating System enabled) mobile robot can connect to this application. The robot has it's own ROS environment with a rosmaster up and running. This ROS environment consists of two major ROS nodes - a custom built V R Present Package for tele-operation, and the robot's ROS driver package (Robot Driver Package). The V R Present Package has a UDP server running which receives data from the Android application, extracts velocity information from it, and publishes that on the /cmd\textunderscore vel topic. This topic is, in turn, subscribed to by the Robot Driver Package for translational and rotational movement of the robot. The Robot Driver Package also publishes odometry data on the /odom topic, which is subscribed to by the V R Present Package for feedback in head tracking mode.
-</p>
 
 <!-- <h1 id="candf">Conclusions and Future Work</h1>
 
